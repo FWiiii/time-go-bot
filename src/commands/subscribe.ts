@@ -8,7 +8,7 @@ export function subscribe() {
   return async (ctx: Context) => {
     const chat = ctx.chat as Chat.PrivateChat
     const chatId = ctx.chat?.id
-    const userName = chat.username
+    const userName = chat.username || chat.first_name
     // @ts-expect-error
     const subscribeDate = ctx.payload
 

@@ -20,7 +20,8 @@ bot.telegram.setMyCommands([
 ])
 
 const job = new CronJob(
-  '0 * * * *', // every hour
+  // '0 * * * *', // every hour
+  '*/30 * * * * *',
   () => {
     sendSubscribeMessage(bot)
   }, // onTick
