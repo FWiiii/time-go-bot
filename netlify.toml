@@ -1,2 +1,4 @@
+# ./netlify.toml
+
 [functions."send-subscribe-message"]
-schedule = "*/30 * * * * *"
+schedule = "@hourly"
