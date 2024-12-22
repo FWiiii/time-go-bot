@@ -1,7 +1,7 @@
 import { CronJob } from 'cron'
 import { Telegraf } from 'telegraf'
 
-import { sendSubscribeMessage, subscribe, subscribeInfo, unSubscribe } from './commands'
+import { subscribe, subscribeInfo, unSubscribe } from './commands'
 import { BOT_TOKEN } from './env'
 
 export const bot = new Telegraf(BOT_TOKEN)
@@ -18,15 +18,3 @@ bot.telegram.setMyCommands([
   { command: 'un_subscribe', description: 'Unsubscribe from a date' },
   { command: 'subscribe_info', description: 'Get your current subscriptions' },
 ])
-
-const job = new CronJob(
-  // '0 * * * *', // every hour
-  '*/30 * * * * *',
-  () => {
-    sendSubscribeMessage(bot)
-  }, // onTick
-  null, // onComplete
-  true, // start
-  'Asia/Shanghai', // timeZone
-)
-job.start()

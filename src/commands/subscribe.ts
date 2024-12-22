@@ -1,6 +1,7 @@
 import type { Context, Telegraf } from 'telegraf'
 import type { Chat } from 'telegraf/types'
 import { bold, fmt, mention, spoiler } from 'telegraf/format'
+import { bot } from '..'
 import { sql } from '../../db/db'
 import { timeToDate } from '../utils'
 
@@ -43,7 +44,7 @@ export function subscribe() {
   }
 }
 
-export async function sendSubscribeMessage(bot: Telegraf) {
+export async function sendSubscribeMessage() {
   const users = await sql`SELECT * FROM subscribe_date`
 
   if (users.length === 0)
